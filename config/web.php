@@ -51,7 +51,7 @@ $config = [
                 'logout' => 'auth/logout',
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'profile'],
-                
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'supplier'],               
             ],
         ],
         'request' => [

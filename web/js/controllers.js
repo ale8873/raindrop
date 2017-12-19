@@ -56,17 +56,11 @@
  * Contains several global data used in different view
  *
  */
-function MainCtrl($http,$scope,$location,$rootScope) {
+function MainCtrl($http,$scope,$location,$rootScope, changeAvatar) {
 
-	$rootScope.find = function(model,data={}){		
-		return $http({method : 'POST', url : 'index.php/'+model, data:data}).then(function successCallback(response) {
-			return response.data;
-		}, function errorCallback(response) {
-			return false;
-		});				
-	}
-	
-	$rootScope.loadProfile = function(){
+	$rootScope.changeAvatar = changeAvatar.modal;
+		
+	$scope.loadProfile = function(){
 		return $http({method : 'POST', url : 'index.php/profile'}).then(function successCallback(response) {
 			$rootScope.profile = response.data[0];
 		}, function errorCallback(response) {
@@ -74,7 +68,7 @@ function MainCtrl($http,$scope,$location,$rootScope) {
 		});	
 	}
 	
-	$rootScope.loadProfile();
+	$scope.loadProfile();
 	
 	
 	
@@ -2978,7 +2972,40 @@ function loadingCtrl($scope, $timeout){
 
 }
 
+function supplierCtrl($scope,DTOptionsBuilder, model){
+    $scope.dtOptions = DTOptionsBuilder.newOptions()
+        .withDOM('<"html5buttons"B>lTfgitp')
+        .withButtons([
+            {extend: 'copy'},
+            {extend: 'csv'},
+            {extend: 'excel', title: 'ExampleFile'},
+            {extend: 'pdf', title: 'ExampleFile'},
 
+            {extend: 'print',
+                customize: function (win){
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                }
+            }
+        ]);
+
+    model.get("suppliers").then(function (data) {
+        if (data.status == 200)
+            $scope.suppliers = data.data;
+    }, function (err) {
+        console.log(err);
+    })
+}
+function supplierCreateCtrl($scope, model,$location){
+	$scope.save = function(){
+		model.post("suppliers",$scope.supplier)
+		$location.path("/supplier/grid");
+	}
+}
 function datatablesCtrl($scope,DTOptionsBuilder){
 
     $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -3488,6 +3515,10 @@ function datamapsCtrl($scope) {
 
 }
 
+function profileCtrl($scope) {
+	
+}
+
 function loginsCtrl($scope, $http, $location, $rootScope, notify) {
 	$scope.login = function() {
 		$scope.data = {
@@ -3531,16 +3562,7 @@ function pdfCtrl($scope) {
     $scope.httpHeaders = { Authorization: 'Bearer some-aleatory-token' };
 }
 
-function navigationCtrl($scope, $uibModal) {
-	$scope.changeAvatar = function(){
-        var modalInstance = $uibModal.open({
-            templateUrl: 'views/change_avatar.html',
-            controller:'changeAvatarModalCtrl'
-        });
-	}
-}
-
-function changeAvatarCtrl($scope) {	
+function changeAvatarCtrl($scope, $uibModalInstance,notify, model) {	
     $scope.myImage='';
     $scope.myCroppedImage='';
 
@@ -3554,12 +3576,30 @@ function changeAvatarCtrl($scope) {
       };
       reader.readAsDataURL(file);
     };
-    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+    
+    $uibModalInstance.rendered.then(function() {
+        angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+    });
+    
+    $scope.ok = function () {
+    	if($scope.myImage!=''){
+    		$scope.profile.image = $scope.myCroppedImage; 
+    		model.put("profiles",$scope.profile);
+    		$uibModalInstance.close();
+    	}
+    	else{
+			notify({
+			    message:'Selezionare un immagine',
+			    classes: 'alert-info'
+			});
+    	}
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
 }
 
-function changeAvatarModalCtrl($scope) {	
-
-}
 
 
 function passwordMeterCtrl($scope){
@@ -3670,7 +3710,8 @@ angular
     .controller('passwordMeterCtrl', passwordMeterCtrl)
 	.controller('loginsCtrl', loginsCtrl)
 	.controller('logoutCtrl', logoutCtrl)
-	.controller('navigationCtrl', navigationCtrl)
 	.controller('ModalInstanceCtrl', ModalInstanceCtrl)
 	.controller('changeAvatarCtrl', changeAvatarCtrl)
-	.controller('changeAvatarModalCtrl', changeAvatarModalCtrl)
+	.controller('profileCtrl', profileCtrl)
+	.controller('supplierCtrl', supplierCtrl)
+	.controller('supplierCreateCtrl', supplierCreateCtrl)

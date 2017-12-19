@@ -24,15 +24,15 @@
         <div class="col-md-6">
 
             <div class="profile-image">
-                <img src="img/a4.jpg" class="img-circle circle-border m-b-md" alt="profile">
+                <img ng-click="changeAvatar()" ng-src="{{profile.image}}" class="img-circle circle-border m-b-md" alt="profile">
             </div>
             <div class="profile-info">
                 <div class="">
                     <div>
                         <h2 class="no-margins">
-                            Alex Smith
+                            <span contenteditable="true">{{profile.firstname}}</span> <span contenteditable="true">{{profile.lastname}}</span>
                         </h2>
-                        <h4>Founder of Groupeq</h4>
+                        <h4>{{profile.role}}</h4>
                         <small>
                             There are many variations of passages of Lorem Ipsum available, but the majority
                             have suffered alteration in some form Ipsum available.

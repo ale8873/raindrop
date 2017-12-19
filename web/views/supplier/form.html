@@ -1,0 +1,51 @@
+<div class="col-lg-12">
+	<div class="ibox float-e-margins">
+		<div class="ibox-content">
+			<form method="get" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.supplier.name" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Partita Iva</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.supplier.vat" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Nazione</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.supplier.country" type="text"
+							class="form-control">
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Telefono</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.supplier.phone" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Cellulare</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="$parent.supplier.mobile" class="form-control">
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<div class="col-sm-4 col-sm-offset-2">
+						<a class="btn btn-white" ui-sref="supplier.grid" type="submit">Cancel</a>
+						<button class="btn btn-primary" ng-click="save()" type="submit">Save
+							changes</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

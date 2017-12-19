@@ -3002,8 +3002,12 @@ function supplierCtrl($scope,DTOptionsBuilder, model){
 }
 function supplierCreateCtrl($scope, model,$location){
 	$scope.save = function(){
-		model.post("suppliers",$scope.supplier)
-		$location.path("/supplier/grid");
+		if ($scope.supplier_form.$valid) {
+			model.post("suppliers",$scope.supplier)
+			$location.path("/supplier/grid");
+        } else {
+            $scope.supplier_form.submitted = true;
+        }
 	}
 }
 function datatablesCtrl($scope,DTOptionsBuilder){

@@ -1,12 +1,17 @@
 <div class="col-lg-12">
 	<div class="ibox float-e-margins">
 		<div class="ibox-content">
-			<form method="get" class="form-horizontal">
+			<form name="$parent.supplier_form" novalidate ng-submit="save()" method="get" class="form-horizontal">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nome</label>
 					<div class="col-sm-10">
-						<input ng-model="$parent.supplier.name" type="text" class="form-control">
+						<input required ng-model="$parent.supplier.name" name="name" type="text" ng-maxlength="45" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.supplier_form.name.$invalid && $parent.supplier_form.submitted">
+                        	<small class="text-danger" ng-show="$parent.supplier_form.name.$error.required">Campo obbligatorio</small>
+                        	<small class="text-danger" ng-show="$parent.supplier_form.name.$error.maxlength">Il nome non può essere più lungo di 45 caratteri</small>
+                    	</div>
 					</div>
+
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
@@ -40,8 +45,8 @@
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<a class="btn btn-white" ui-sref="supplier.grid" type="submit">Cancel</a>
-						<button class="btn btn-primary" ng-click="save()" type="submit">Save
+						<a class="btn btn-white" ui-sref="supplier.grid" >Cancel</a>
+						<button class="btn btn-primary" type="submit">Save
 							changes</button>
 					</div>
 				</div>

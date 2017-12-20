@@ -3013,7 +3013,7 @@ function supplierCtrl($scope,DTOptionsBuilder, model){
     }
     
 }
-function supplierCreateCtrl($scope, model,$location){
+function supplierCreateCtrl($scope, model,$location, $filter){
 	
 	$scope.supplier={};
 	$scope.supplier.country_code = "IT"
@@ -3027,9 +3027,15 @@ function supplierCreateCtrl($scope, model,$location){
         }
 	}
 	
+	$scope.setPrefix = function(){
+		$scope.prefix = $filter('filter')($scope.countries, {code: $scope.supplier.country_code})[0].prefix;
+	}
+	
     model.get("countries").then(function (data) {
-        if (data.status == 200)
+        if (data.status == 200){
             $scope.countries= data.data;
+            $scope.setPrefix();
+        }
     }, function (err) {
         console.log(err);
     }) 

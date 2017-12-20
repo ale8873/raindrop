@@ -2980,27 +2980,44 @@ function supplierCtrl($scope,DTOptionsBuilder, model){
             {extend: 'csv'},
             {extend: 'excel', title: 'ExampleFile'},
             {extend: 'pdf', title: 'ExampleFile'},
-
             {extend: 'print',
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
                     $(win.document.body).css('font-size', '10px');
-
                     $(win.document.body).find('table')
                         .addClass('compact')
                         .css('font-size', 'inherit');
                 }
             }
         ]);
-
-    model.get("suppliers").then(function (data) {
-        if (data.status == 200)
-            $scope.suppliers = data.data;
-    }, function (err) {
-        console.log(err);
-    })
+    
+    $scope.getSuppliers = function(){
+        model.get("suppliers").then(function (data) {
+            if (data.status == 200)
+                $scope.suppliers = data.data;
+        }, function (err) {
+            console.log(err);
+        })  	
+    }
+    $scope.getSuppliers();
+      
+    $scope.delete = function(supplier){ 
+    	var response = confirm("Sicuro di vole eliminare il fornitore "+supplier.name+"?");
+    	if (response == true) {
+    	    model.delete("suppliers",supplier.id).then(function (data) {
+    	    	$scope.getSuppliers();
+            }, function (err) {
+                console.log(err);
+            });    	    
+    	}
+    }
+    
 }
 function supplierCreateCtrl($scope, model,$location){
+	
+	$scope.supplier={};
+	$scope.supplier.country_code = "IT"
+	
 	$scope.save = function(){
 		if ($scope.supplier_form.$valid) {
 			model.post("suppliers",$scope.supplier)
@@ -3009,6 +3026,14 @@ function supplierCreateCtrl($scope, model,$location){
             $scope.supplier_form.submitted = true;
         }
 	}
+	
+    model.get("countries").then(function (data) {
+        if (data.status == 200)
+            $scope.countries= data.data;
+    }, function (err) {
+        console.log(err);
+    }) 
+    
 }
 function datatablesCtrl($scope,DTOptionsBuilder){
 

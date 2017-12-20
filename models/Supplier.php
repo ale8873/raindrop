@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property integer $vat
+ * @property string $vat
  * @property string $country_code
  * @property string $phone
  * @property string $mobile
@@ -30,10 +30,11 @@ class Supplier extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'country_code'], 'required'],
-            [['vat'], 'integer'],
-            [['name', 'phone', 'mobile'], 'string', 'max' => 45],
+            [['name', 'vat', 'country_code'], 'required'],
+            [['name'], 'string', 'max' => 45],
+            [['vat'], 'string', 'max' => 11],
             [['country_code'], 'string', 'max' => 2],
+            [['phone', 'mobile'], 'string', 'max' => 20],
         ];
     }
 

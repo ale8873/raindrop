@@ -5,41 +5,52 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nome</label>
 					<div class="col-sm-10">
-						<input required ng-model="$parent.supplier.name" name="name" type="text" ng-maxlength="45" class="form-control">
+						<input required ng-model="$parent.supplier.name" name="name" ng-maxlength="45" class="form-control">
 						<div class="m-t-xs" ng-show="$parent.supplier_form.name.$invalid && $parent.supplier_form.submitted">
                         	<small class="text-danger" ng-show="$parent.supplier_form.name.$error.required">Campo obbligatorio</small>
                         	<small class="text-danger" ng-show="$parent.supplier_form.name.$error.maxlength">Il nome non può essere più lungo di 45 caratteri</small>
                     	</div>
 					</div>
-
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Partita Iva</label>
 					<div class="col-sm-10">
-						<input ng-model="$parent.supplier.vat" type="text" class="form-control">
+						<input ng-model="$parent.supplier.vat" name="vat"  required ng-minlength="8" ng-pattern="/^[0-9]*$/" ng-maxlength="11" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.supplier_form.vat.$invalid && $parent.supplier_form.submitted">
+                        	<small class="text-danger" ng-show="$parent.supplier_form.vat.$error.required">Campo obbligatorio</small>
+                        	<small class="text-danger" ng-show="$parent.supplier_form.vat.$error.maxlength">La partita iva deve essere massimo di 11 cifre</small>
+                        	<small class="text-danger" ng-show="$parent.supplier_form.vat.$error.minlength">La partita iva deve essere minimo di 8 cifre</small>
+                        	<small class="text-danger" ng-show="$parent.supplier_form.vat.$error.pattern">La partita puo contenere solo cifre</small>
+                    	</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nazione</label>
 					<div class="col-sm-10">
-						<input ng-model="$parent.supplier.country_code" type="text"
-							class="form-control">
+						<select ng-model="$parent.supplier.country_code" class="form-control">
+      						<option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
+    					</select>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Telefono</label>
 					<div class="col-sm-10">
-						<input ng-model="$parent.supplier.phone" type="text" class="form-control">
+						<input ng-model="$parent.supplier.phone" ng-pattern="/^[0-9]*$/" type="text" class="form-control">
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Cellulare</label>
+					<label class="col-sm-2 control-label" >Cellulare</label>
 					<div class="col-sm-10">
-						<input type="text" ng-model="$parent.supplier.mobile" class="form-control">
+						<input type="text" name="mobile" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" ng-model="$parent.supplier.mobile" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.supplier_form.mobile.$invalid && $parent.supplier_form.submitted">
+                        	<small class="text-danger" ng-show="$parent.supplier_form.mobile.$error.maxlength">Il numero di cellulare deve essere massimo di 20 cifre</small>
+                        	<small class="text-danger" ng-show="$parent.supplier_form.mobile.$error.minlength">Il numero di cellulare deve essere di almeno 3 cifre</small>
+                        	<small class="text-danger" ng-show="$parent.supplier_form.mobile.$error.pattern">Il numero di cellulare puo contenere solo cifre</small>
+                    	</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>

@@ -13,6 +13,8 @@ use Yii;
  * @property string $lastname
  * @property string $image
  * @property string $role
+ *
+ * @property User $user
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -34,6 +36,7 @@ class Profile extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['image'], 'string'],
             [['firstname', 'lastname', 'role'], 'string', 'max' => 45],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -50,5 +53,13 @@ class Profile extends \yii\db\ActiveRecord
             'image' => 'Image',
             'role' => 'Role',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

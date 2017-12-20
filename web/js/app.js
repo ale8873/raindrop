@@ -10,7 +10,6 @@
         'pascalprecht.translate',       // Angular Translate
         'ngIdle',                       // Idle timer
         'ngSanitize',                    // ngSanitize
-        'ngImgCrop'
     ])
     
     app.service('model', function($http) {  	
@@ -45,7 +44,11 @@
                             {
                                 name: 'cgNotify',
                                 files: ['css/plugins/angular-notify/angular-notify.min.css','js/plugins/angular-notify/angular-notify.min.js']
-                            }
+                            },
+                            {
+                                name: 'ngImgCrop',
+                                files: ['js/plugins/ngImgCrop/ng-img-crop.js','css/plugins/ngImgCrop/ng-img-crop.css']
+                            },
                         ]);
                     }
                 }

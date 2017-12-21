@@ -1307,19 +1307,16 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             }
         })
         .state('supplier.create', {
-            url: "/new",
+            url: "/create",
             templateUrl: "views/supplier/create.html",
             data: { pageTitle: 'Basic form' },
             controller: 'supplierCreateCtrl',
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
-                        }
-                    ]);
-                }
-            }
+        })
+        .state('supplier.update', {
+            url: "/update?id",
+            templateUrl: "views/supplier/update.html",
+            data: { pageTitle: 'Basic form' },
+            controller: 'supplierUpdateCtrl',
         })
         .state('tables.data_tables', {
             url: "/data_tables",

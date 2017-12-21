@@ -39,7 +39,7 @@
                             <td>{{ supplier.mobile }}</td>
                             <td>
                             	<a ng-click="delete(supplier)" ><i class="fa fa-trash"></i></a>
-                            	<a><i class="fa fa-edit"></i></a>
+                            	<a ui-sref="supplier.update({id:supplier.id})" ><i class="fa fa-edit"></i></a>
                             	<a><i class="fa fa-eye"></i></a>	                            	
                             </td>
                         </tr>

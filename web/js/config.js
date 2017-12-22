@@ -1279,7 +1279,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         .state('supplier', {
             abstract: true,
             url: "/supplier",
-            templateUrl: "views/common/content.html"
+            templateUrl: "views/common/content.html",
+            controller: 'supplierCtrl'
         })
         .state('supplier.grid', {
             url: "/grid",
@@ -1304,7 +1305,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         }
                     ]);
                 }
-            }
+            },
+            controller:'supplierGridCtrl'
         })
         .state('supplier.create', {
             url: "/create",

@@ -5,7 +5,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nome</label>
 					<div class="col-sm-10">
-						<input required ng-model="$parent.supplier.name" name="name" ng-maxlength="45" class="form-control">
+						<input required ng-model="$parent.model.name" name="name" ng-maxlength="45" class="form-control">
 						<div class="m-t-xs" ng-show="$parent.form.name.$invalid && $parent.form.submitted">
                         	<small class="text-danger" ng-show="$parent.form.name.$error.required">Campo obbligatorio</small>
                         	<small class="text-danger" ng-show="$parent.form.name.$error.maxlength">Il nome non può essere più lungo di 45 caratteri</small>
@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nazione</label>
 					<div class="col-sm-10">
-						<select ng-change="setPrefix()" ng-model="$parent.supplier.country_code" class="form-control">
+						<select ng-change="setPrefix()" ng-model="$parent.model.country_code" class="form-control">
       						<option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
     					</select>
 					</div>
@@ -25,8 +25,8 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Partita Iva</label>
 					<div class="col-sm-10">
-						<div class="input-group m-b"><span class="input-group-addon">{{supplier.country_code}}</span>
-							<input ng-model="$parent.supplier.vat" name="vat"  required ng-minlength="8" ng-pattern="/^[0-9]*$/" ng-maxlength="11" class="form-control">
+						<div class="input-group m-b"><span class="input-group-addon">{{model.country_code}}</span>
+							<input ng-model="$parent.model.vat" name="vat"  required ng-minlength="8" ng-pattern="/^[0-9]*$/" ng-maxlength="11" class="form-control">
 						</div>
 						<div class="m-t-xs" ng-show="$parent.form.vat.$invalid && $parent.form.submitted">
                         	<small class="text-danger" ng-show="$parent.form.vat.$error.required">Campo obbligatorio</small>
@@ -41,7 +41,7 @@
 					<label class="col-sm-2 control-label">Telefono</label>
 					<div class="col-sm-10">
 						<div class="input-group m-b"><span class="input-group-addon">{{prefix}}</span>
-							<input name="phone" ng-model="$parent.supplier.phone" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" type="text" class="form-control">
+							<input name="phone" ng-model="$parent.model.phone" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" type="text" class="form-control">
 						</div>
 						<div class="m-t-xs" ng-show="$parent.form.phone.$invalid && $parent.form.submitted">
                         	<small class="text-danger" ng-show="$parent.form.phone.$error.maxlength">Il numero di telefono deve essere massimo di 20 cifre</small>
@@ -55,7 +55,7 @@
 					<label class="col-sm-2 control-label" >Cellulare</label>
 					<div class="col-sm-10">
 						<div class="input-group m-b"><span class="input-group-addon">{{prefix}}</span>
-							<input type="text" name="mobile" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" ng-model="$parent.supplier.mobile" class="form-control">
+							<input type="text" name="mobile" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" ng-model="$parent.model.mobile" class="form-control">
 						</div>
 						<div class="m-t-xs" ng-show="$parent.form.mobile.$invalid && $parent.form.submitted">
                         	<small class="text-danger" ng-show="$parent.form.mobile.$error.maxlength">Il numero di cellulare deve essere massimo di 20 cifre</small>
@@ -67,7 +67,7 @@
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<a class="btn btn-white" ui-sref="supplier.grid" >Cancel</a>
+						<a class="btn btn-white" ui-sref="{{model_name}}.grid" >Cancel</a>
 						<button class="btn btn-primary" type="submit">Save
 							changes</button>
 					</div>

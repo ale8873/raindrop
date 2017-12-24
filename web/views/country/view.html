@@ -1,0 +1,40 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>{{model.name}}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a ui-sref="supplier.grid">{{label}}</a>
+            </li>
+            <li class="active">
+                <strong>{{model.name}}</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="col-lg-12">
+		<div ng-if="model && columns" class="ibox float-e-margins">
+			<div class="ibox-content">
+				<table class="table">
+					<tbody>
+						<tr ng-if="value && excluded_columns | not_contains:key" ng-repeat="(key, value) in model">
+							<td><b>{{columns[key]}}</b></td>
+							<td>
+								<span ng-if="key=='vat'">{{model.country_code}}</span>
+								<span ng-if="key=='phone' || key=='mobile'" ng-repeat="country in countries | filter: {code:model.country_code}">{{country.prefix}}</span>
+								{{value}}
+							</td>
+						</tr>
+					</tbody>
+
+				</table>				
+			</div>
+		</div>
+	</div>
+</div>

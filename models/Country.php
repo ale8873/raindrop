@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $code
  * @property string $name
+ * @property string $prefix
  */
 class Country extends \yii\db\ActiveRecord
 {
@@ -27,11 +28,13 @@ class Country extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'name'], 'required'],
+            [['code', 'name', 'prefix'], 'required'],
             [['code'], 'string', 'max' => 2],
             [['name'], 'string', 'max' => 45],
+            [['prefix'], 'string', 'max' => 10],
             [['name'], 'unique'],
             [['code'], 'unique'],
+            [['prefix'], 'unique'],
         ];
     }
 
@@ -41,9 +44,10 @@ class Country extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'code' => 'Code',
-            'name' => 'Name',
+            'id' => 'Id',
+            'code' => 'Codice',
+            'name' => 'Nome',
+            'prefix' => 'Prefisso Telefonico',
         ];
     }
 }

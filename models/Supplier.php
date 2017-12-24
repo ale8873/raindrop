@@ -13,6 +13,9 @@ use Yii;
  * @property string $country_code
  * @property string $phone
  * @property string $mobile
+ * @property string $fax
+ * @property string $note
+ * @property string $tax_code
  */
 class Supplier extends \yii\db\ActiveRecord
 {
@@ -30,11 +33,13 @@ class Supplier extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'vat', 'country_code'], 'required'],
+            [['name'], 'required'],
+            [['note'], 'string'],
             [['name'], 'string', 'max' => 45],
             [['vat'], 'string', 'max' => 11],
             [['country_code'], 'string', 'max' => 2],
-            [['phone', 'mobile'], 'string', 'max' => 20],
+            [['phone', 'mobile', 'fax'], 'string', 'max' => 20],
+            [['tax_code'], 'string', 'max' => 16],
         ];
     }
 
@@ -44,12 +49,15 @@ class Supplier extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'vat' => 'Vat',
-            'country_code' => 'Country Code',
-            'phone' => 'Phone',
-            'mobile' => 'Mobile',
+            'id' => 'Codice',
+            'name' => 'Denominazione',
+            'vat' => 'Partita Iva',
+            'country_code' => 'Codice Paese',
+            'phone' => 'Telefono',
+            'mobile' => 'Cellulare',
+            'fax' => 'Fax',
+            'note' => 'Note',
+            'tax_code' => 'Codice Fiscale',
         ];
     }
 }

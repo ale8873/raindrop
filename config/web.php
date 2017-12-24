@@ -49,6 +49,7 @@ $config = [
                 'login' => 'auth/login',
                 'profile' => 'auth/profile',
                 'logout' => 'auth/logout',
+                'columns' => 'model-info/columns',
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'profile'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'supplier'],

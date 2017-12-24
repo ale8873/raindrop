@@ -12,9 +12,31 @@
         'ngSanitize',                    // ngSanitize
     ])
     
+    app.filter('contains', function() {
+    	return function (array, needle) {
+    		if(array){
+    			return array.indexOf(needle) >= 0;
+    		}
+    	}
+    });
+  	
+    app.filter('not_contains', function() {
+    	return function (array, needle) {
+    		if(array){
+    			return array.indexOf(needle) < 0;
+    		}
+    	}
+    });
+    
     app.service('model', function($http) {  	
-        this.get = function(model) {
-            return $http.get('/index.php/'+model);
+        this.get = function(model,id=null) {
+        	if(id){
+        		var url = '/index.php/'+model+'/'+id;
+        	}
+        	else{
+        		var url = '/index.php/'+model;
+        	}
+            return $http.get(url);
         };
         this.post = function (model,data) {
             return $http.post('/index.php/'+model, data);
@@ -24,6 +46,9 @@
         };
         this.delete = function (model, id) {
             return $http.delete('/index.php/'+model + '/' + id);
+        };
+        this.columns = function (model) {
+            return $http.get('/index.php/columns?model='+model);
         };
     });
     

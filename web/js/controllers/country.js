@@ -1,22 +1,7 @@
-function supplierCtrl($scope, model, $filter){
-	$scope.label = "Fornitori";
-	$scope.single_label = "Fornitore";
-	$scope.model_name="supplier";
-	$scope.setPrefix = function(){
-		$scope.prefix = $filter('filter')($scope.countries, {code: $scope.model.country_code})[0].prefix;
-	}
-	$scope.loadCountries = function(){
-		model.get("countries").then(function (data) {
-            if (data.status == 200){
-                $scope.countries= data.data;
-                if($scope.model){
-                	$scope.setPrefix();
-                }
-            }
-        }, function (err) {
-            console.log(err);
-        }) 
-	}
+function countryCtrl($scope, model, $filter){
+	$scope.label = "Nazioni";
+	$scope.single_label = "Nazione";
+	$scope.model_name="country";
 	
 	model.columns($scope.model_name).then(function(data){
 		$scope.columns = data.data;
@@ -24,13 +9,10 @@ function supplierCtrl($scope, model, $filter){
 	
 }
 
-function supplierGridCtrl($scope, DTOptionsBuilder, model){
+function countryGridCtrl($scope, DTOptionsBuilder, model){
 	
-	$scope.excluded_columns = ['note','country_code','id'];
-	
-	$scope.loadCountries();
+	$scope.excluded_columns = ['id'];
 
-	
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withDOM('<"html5buttons"B>lTfgitp')
         .withButtons([
@@ -50,7 +32,7 @@ function supplierGridCtrl($scope, DTOptionsBuilder, model){
         ]);
     
     $scope.get = function(){
-        model.get($scope.model_name+"s").then(function (data) {
+        model.get("countries").then(function (data) {
             if (data.status == 200)
                 $scope.models = data.data;
         }, function (err) {
@@ -62,7 +44,7 @@ function supplierGridCtrl($scope, DTOptionsBuilder, model){
     $scope.delete = function(model_to_delete){ 
     	var response = confirm("Sicuro di vole eliminare "+model_to_delete.name+"?");
     	if (response == true) {
-    	    model.delete($scope.model_name+"s",model_to_delete.id).then(function (data) {
+    	    model.delete("countries",model_to_delete.id).then(function (data) {
     	    	$scope.get();
             }, function (err) {
                 console.log(err);
@@ -71,14 +53,13 @@ function supplierGridCtrl($scope, DTOptionsBuilder, model){
     }
     
 }
-function supplierCreateCtrl($scope, model, $location){
+function countryCreateCtrl($scope, model, $location){
 		
 	$scope.$parent.model={};
 	$scope.$parent.model.country_code = "IT"
-    $scope.loadCountries();
 	$scope.save = function(){
 		if ($scope.form.$valid) {
-			model.post($scope.model_name+"s",$scope.model)
+			model.post("countries",$scope.model)
 			$location.path("/"+$scope.model_name+"/grid");
         } else {
             $scope.form.submitted = true;
@@ -87,35 +68,33 @@ function supplierCreateCtrl($scope, model, $location){
 	
 }
 
-function supplierUpdateCtrl($scope, model, $location, $filter, $stateParams){
+function countryUpdateCtrl($scope, model, $location, $filter, $stateParams){
 	
 	$scope.save = function(){
 		if ($scope.form.$valid) {
-			model.put($scope.model_name+"s",$scope.model)
+			model.put("countries",$scope.model)
 			$location.path("/"+$scope.model_name+"/grid");
         } else {
             $scope.form.submitted = true;
         }
 	}
 	
-    model.get($scope.model_name+"s",$stateParams.id).then(function (data) {
+    model.get("countries",$stateParams.id).then(function (data) {
         if (data.status == 200){        
             $scope.$parent.model = data.data;
-            $scope.loadCountries();
         }
     }, function (err) {
         console.log(err);
     })       
 }
 
-function supplierViewCtrl($scope, model, $filter, $stateParams){
+function countryViewCtrl($scope, model, $filter, $stateParams){
     
-	$scope.excluded_columns = ['country_code'];
+	$scope.excluded_columns = ['id'];
 
-	model.get($scope.model_name+"s",$stateParams.id).then(function (data) {
+	model.get("countries",$stateParams.id).then(function (data) {
         if (data.status == 200){        
             $scope.$parent.model = data.data;
-            $scope.loadCountries();
         }
     }, function (err) {
         console.log(err);
@@ -126,12 +105,12 @@ function supplierViewCtrl($scope, model, $filter, $stateParams){
 *
 * Pass all functions into module
 */
-var model_name = "supplier";
+var model_name = "country";
 angular
    .module('inspinia')
-   .controller(model_name+'Ctrl', supplierCtrl)
-   .controller(model_name+'GridCtrl', supplierGridCtrl)
-   .controller(model_name+'CreateCtrl', supplierCreateCtrl)
-   .controller(model_name+'UpdateCtrl', supplierUpdateCtrl)
-   .controller(model_name+'ViewCtrl', supplierViewCtrl)
+   .controller(model_name+'Ctrl', countryCtrl)
+   .controller(model_name+'GridCtrl', countryGridCtrl)
+   .controller(model_name+'CreateCtrl', countryCreateCtrl)
+   .controller(model_name+'UpdateCtrl', countryUpdateCtrl)
+   .controller(model_name+'ViewCtrl', countryViewCtrl)
  

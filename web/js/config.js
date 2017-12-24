@@ -1320,6 +1320,62 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             data: { pageTitle: 'Basic form' },
             controller: 'supplierUpdateCtrl',
         })
+        .state('supplier.view', {
+            url: "/view?id",
+            templateUrl: "views/supplier/view.html",
+            data: { pageTitle: 'Basic form' },
+            controller: 'supplierViewCtrl',
+        })
+        .state('country', {
+            abstract: true,
+            url: "/country",
+            templateUrl: "views/common/content.html",
+            controller: 'countryCtrl'
+        })
+        .state('country.grid', {
+            url: "/grid",
+            templateUrl: "views/country/grid.html",
+            data: { pageTitle: 'Data Tables' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        }
+                    ]);
+                }
+            },
+            controller:'countryGridCtrl'
+        })
+        .state('country.create', {
+            url: "/create",
+            templateUrl: "views/country/create.html",
+            data: { pageTitle: 'Basic form' },
+            controller: 'countryCreateCtrl',
+        })
+        .state('country.update', {
+            url: "/update?id",
+            templateUrl: "views/country/update.html",
+            data: { pageTitle: 'Basic form' },
+            controller: 'countryUpdateCtrl',
+        })
+        .state('country.view', {
+            url: "/view?id",
+            templateUrl: "views/country/view.html",
+            data: { pageTitle: 'Basic form' },
+            controller: 'countryViewCtrl',
+        })
         .state('tables.data_tables', {
             url: "/data_tables",
             templateUrl: "views/table_data_tables.html",

@@ -6,7 +6,7 @@
                 <a href="index.html">Home</a>
             </li>
             <li>
-                <a ui-sref="supplier.grid">{{label}}</a>
+                <a ui-sref="{{model_name}}.grid">{{label}}</a>
             </li>
             <li class="active">
                 <strong>{{model.name}}</strong>
@@ -26,13 +26,10 @@
 						<tr ng-if="value && excluded_columns | not_contains:key" ng-repeat="(key, value) in model">
 							<td><b>{{columns[key]}}</b></td>
 							<td>
-								<span ng-if="key=='vat'">{{model.country_code}}</span>
-								<span ng-if="key=='phone' || key=='mobile'" ng-repeat="country in countries | filter: {code:model.country_code}">{{country.prefix}}</span>
 								{{value}}
 							</td>
 						</tr>
 					</tbody>
-
 				</table>				
 			</div>
 		</div>

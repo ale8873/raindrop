@@ -1302,6 +1302,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             serie: true,
                             name: 'datatables.buttons',
                             files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        },
+                        {
+                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
                         }
                     ]);
                 }
@@ -1352,6 +1355,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                             serie: true,
                             name: 'datatables.buttons',
                             files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        },
+                        {
+                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
                         }
                     ]);
                 }

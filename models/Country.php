@@ -11,6 +11,7 @@ use Yii;
  * @property string $code
  * @property string $name
  * @property string $prefix
+ * @property integer $vat
  */
 class Country extends \yii\db\ActiveRecord
 {
@@ -29,6 +30,7 @@ class Country extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'name', 'prefix'], 'required'],
+            [['vat'], 'integer'],
             [['code'], 'string', 'max' => 2],
             [['name'], 'string', 'max' => 45],
             [['prefix'], 'string', 'max' => 10],
@@ -48,6 +50,7 @@ class Country extends \yii\db\ActiveRecord
             'code' => 'Codice',
             'name' => 'Nome',
             'prefix' => 'Prefisso Telefonico',
+            'vat' => 'Vat',
         ];
     }
 }

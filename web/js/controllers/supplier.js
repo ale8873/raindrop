@@ -18,6 +18,16 @@ function supplierCtrl($scope, model, $filter){
         }) 
 	}
 	
+	$scope.loadProvinces = function(){
+		model.get("provinces").then(function (data) {
+            if (data.status == 200){
+                $scope.provinces = data.data;
+            }
+        }, function (err) {
+            console.log(err);
+        }) 
+	}
+	
 	model.columns($scope.model_name).then(function(data){
 		$scope.columns = data.data;
 	});
@@ -73,6 +83,8 @@ function supplierGridCtrl($scope, DTOptionsBuilder, model){
 }
 function supplierCreateCtrl($scope, model, $location){
 		
+	$scope.loadProvinces();
+	
 	$scope.$parent.model={};
 	$scope.$parent.model.country_code = "IT"
     $scope.loadCountries();
@@ -88,6 +100,8 @@ function supplierCreateCtrl($scope, model, $location){
 }
 
 function supplierUpdateCtrl($scope, model, $location, $filter, $stateParams){
+	
+	$scope.loadProvinces();
 	
 	$scope.save = function(){
 		if ($scope.form.$valid) {

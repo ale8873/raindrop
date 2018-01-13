@@ -16,6 +16,13 @@ use Yii;
  * @property string $fax
  * @property string $note
  * @property string $tax_code
+ * @property string $email
+ * @property string $pec
+ * @property string $address
+ * @property string $cap
+ * @property string $city
+ * @property string $province
+ * @property string $referent
  */
 class Supplier extends \yii\db\ActiveRecord
 {
@@ -35,11 +42,13 @@ class Supplier extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['note'], 'string'],
-            [['name'], 'string', 'max' => 45],
+            [['name', 'email', 'pec', 'city', 'province', 'referent'], 'string', 'max' => 45],
             [['vat'], 'string', 'max' => 11],
             [['country_code'], 'string', 'max' => 2],
             [['phone', 'mobile', 'fax'], 'string', 'max' => 20],
             [['tax_code'], 'string', 'max' => 16],
+            [['address'], 'string', 'max' => 255],
+            [['cap'], 'string', 'max' => 5],
         ];
     }
 
@@ -58,6 +67,13 @@ class Supplier extends \yii\db\ActiveRecord
             'fax' => 'Fax',
             'note' => 'Note',
             'tax_code' => 'Codice Fiscale',
+            'email' => 'Email',
+            'pec' => 'Pec',
+            'address' => 'Indirizzo',
+            'cap' => 'Cap',
+            'city' => 'Comune',
+            'province' => 'Provincia',
+            'referent' => 'Referente',
         ];
     }
 }

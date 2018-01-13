@@ -12,7 +12,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     IdleProvider.idle(5); // in seconds
     IdleProvider.timeout(120); // in seconds
 
-    $urlRouterProvider.otherwise("/dashboards/dashboard_1");
+    $urlRouterProvider.otherwise("/dashboards/dashboard_1"); // default route
 
     $ocLazyLoadProvider.config({
         // Set to true if you want to see what and when is dynamically loaded
@@ -21,7 +21,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     supplierConfig($stateProvider);
     countryConfig($stateProvider);
     $stateProvider
-
         .state('dashboards', {
             abstract: true,
             url: "/dashboards",

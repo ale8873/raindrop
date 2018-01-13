@@ -23,6 +23,15 @@
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
+					<label class="col-sm-2 control-label">Province</label>
+					<div class="col-sm-10">
+						<select ng-model="$parent.model.province" class="form-control">
+      						<option ng-repeat="province in provinces" value="{{province.code}}">{{province.name}}</option>
+    					</select>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label">Partita Iva</label>
 					<div class="col-sm-10">
 						<div class="input-group m-b"><span class="input-group-addon">{{model.country_code}}</span>

@@ -54,6 +54,8 @@ $config = [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'profile'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'supplier'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'country'],                
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'province'],
+                
             ],
         ],
         'request' => [

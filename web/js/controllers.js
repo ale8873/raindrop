@@ -3551,7 +3551,7 @@ function passwordMeterCtrl($scope){
  * Pass all functions into module
  */
 angular
-    .module('inspinia')
+    .module(app_name)
     .controller('MainCtrl', MainCtrl)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)

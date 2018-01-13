@@ -1,9 +1,10 @@
 /**
- * INSPINIA - Responsive Admin Theme
+ * Raindrop
  *
  */
+var app_name = "raindrop"; // app module name
 (function () {
-    var app = angular.module('inspinia', [
+    var app = angular.module(app_name, [
         'ui.router',                    // Routing
         'oc.lazyLoad',                  // ocLazyLoad
         'ui.bootstrap',                 // Ui Bootstrap

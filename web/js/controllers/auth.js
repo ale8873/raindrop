@@ -41,6 +41,6 @@ function logoutCtrl($scope, $http, $location, $rootScope) {
 * Pass all functions into module
 */
 angular
-   .module('inspinia')
+   .module(app_name)
    .controller('loginsCtrl', loginsCtrl)
    .controller('logoutCtrl', logoutCtrl)

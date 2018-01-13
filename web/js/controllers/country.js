@@ -107,7 +107,7 @@ function countryViewCtrl($scope, model, $filter, $stateParams){
 */
 var model_name = "country";
 angular
-   .module('inspinia')
+   .module(app_name)
    .controller(model_name+'Ctrl', countryCtrl)
    .controller(model_name+'GridCtrl', countryGridCtrl)
    .controller(model_name+'CreateCtrl', countryCreateCtrl)

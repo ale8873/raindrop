@@ -128,7 +128,7 @@ function supplierViewCtrl($scope, model, $filter, $stateParams){
 */
 var model_name = "supplier";
 angular
-   .module('inspinia')
+   .module(app_name)
    .controller(model_name+'Ctrl', supplierCtrl)
    .controller(model_name+'GridCtrl', supplierGridCtrl)
    .controller(model_name+'CreateCtrl', supplierCreateCtrl)

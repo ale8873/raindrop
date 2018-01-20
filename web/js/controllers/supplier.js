@@ -36,10 +36,9 @@ function supplierCtrl($scope, model, $filter){
 
 function supplierGridCtrl($scope, DTOptionsBuilder, model){
 	
-	$scope.excluded_columns = ['note','country_code','id'];
+	$scope.excluded_columns = ['note','country_code','id','city','cap','address','tax_code','fax','pec','vat','province'];
 	
 	$scope.loadCountries();
-
 	
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withDOM('<"html5buttons"B>lTfgitp')
@@ -122,13 +121,34 @@ function supplierUpdateCtrl($scope, model, $location, $filter, $stateParams){
     })       
 }
 
-function supplierViewCtrl($scope, model, $filter, $stateParams){
+function supplierViewCtrl($http, $scope, model, $filter, $stateParams){
     
-	$scope.excluded_columns = ['country_code'];
+
+	
+	$scope.excluded_columns = ['country_code','id','address','city','province','cap','phone','mobile','fax','email','pec'];
 
 	model.get($scope.model_name+"s",$stateParams.id).then(function (data) {
         if (data.status == 200){        
             $scope.$parent.model = data.data;
+            // Simple GET request example:
+            $http({
+              method: 'GET',
+              url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+$scope.model.address+","+$scope.model.city+"&key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"
+            }).then(function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+            	var location = response.data.results[0].geometry.location;
+                $scope.mapOptions = {
+                    	zoom: 16,
+                        center: new google.maps.LatLng(location.lat, location.lng),
+                        // Style for Google Maps
+                        styles: [{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"hue":"#ff0000"},{"saturation":-100},{"lightness":99}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"color":"#808080"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ece2d9"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#ccdca1"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#767676"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#b8cb93"}]},{"featureType":"poi.park","stylers":[{"visibility":"on"}]},{"featureType":"poi.sports_complex","stylers":[{"visibility":"on"}]},{"featureType":"poi.medical","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","stylers":[{"visibility":"simplified"}]}],
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
             $scope.loadCountries();
         }
     }, function (err) {

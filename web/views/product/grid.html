@@ -1,0 +1,78 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Menu</h2>
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active"><strong>Menu</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="row">
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="col-lg-12">
+		<div ng-if="models && columns" class="ibox float-e-margins">
+			<div class="ibox-title">
+				<a ui-sref="{{model_name}}.create" class="btn btn-info">Nuovo</a>
+				<a ui-sref="{{model_name}}.import" class="btn btn-info">Importa</a>				
+								<span style="margin-left:10px;" ng-if="cart.length>0" class="pull-right"><a ui-sref="{{model_name}}.cart" class="btn btn-info"><i class="fa fa-shopping-cart" ></i> Ordine ({{cart.length}})</a></span>
+				
+				<span class="pull-right">
+					<select class="form-control">
+						<option value="all" >Tutte le categorie</option>
+						<option ng-repeat="category in categories" value="category.category">{{category.category}}</option>
+					</select>
+				</span>
+
+			</div>
+			<div class="ibox-content">
+				<table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th ng-repeat="(key, value) in columns" ng-if="excluded_columns | not_contains:key">{{value}}</th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="model in models">
+							<td><input icheck ng-model="model.selected" type="checkbox" /></td>
+							<td style="text-align:center;" ><img ng-src="{{model.image}}" style="max-height:80px;max-width:80px;" /></td>
+							<td ng-repeat="(key, value) in columns" ng-if="excluded_columns | not_contains:key">
+								<span ng-if="model[key] && key=='vat'">{{model.country_code}}</span>
+								<span ng-if="model[key] && (key=='phone' || key=='mobile')" ng-repeat="country in countries | filter: {code:model.country_code}">{{country.prefix}}</span>
+								{{ model[key] }}
+							</td>
+							<td>
+								<a class="btn btn-info" ng-click="addToCart(model)">
+									<i tooltip-placement="top" uib-tooltip="Aggiungi alla cassa" class="fa fa-cart-plus" ></i>
+								</a>
+							</td>
+							<td>
+								<a class="btn btn-info" tooltip-placement="top" uib-tooltip="Elimina" ng-click="delete(model)">
+									<i class="fa fa-trash"></i>
+								</a>
+							</td>
+							<td>
+								<a class="btn btn-info" tooltip-placement="top" uib-tooltip="Modifica" ui-sref="{{model_name}}.update({id:model.id})">
+									<i class="fa fa-edit"></i>
+								</a>
+							</td>
+							<td>
+								<a class="btn btn-info" tooltip-placement="top" uib-tooltip="Visualizza" ui-sref="{{model_name}}.view({id:model.id})">
+									<i class="fa fa-eye"></i>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

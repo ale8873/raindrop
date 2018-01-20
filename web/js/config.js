@@ -20,6 +20,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     });
     supplierConfig($stateProvider);
     countryConfig($stateProvider);
+    productConfig($stateProvider);
+    orderConfig($stateProvider);
     $stateProvider
         .state('dashboards', {
             abstract: true,

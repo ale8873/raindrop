@@ -32,9 +32,32 @@
             <li ui-sref-active="active">
             	<a ui-sref="supplier.grid"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Fornitori</span></a>
             </li>
+            
+            <li ui-sref-active="active">
+            	<a ui-sref="product.grid"><i class="fa fa-flag"></i> <span class="nav-label">Menu</span></a>
+            </li> 
+            
+            <li ui-sref-active="active">
+            	<a ui-sref="product.cart">
+            		<i class="fa fa-shopping-cart"></i>
+            		<span class="nav-label">Ordine</span>
+            		<span ng-if="cart.length>0" class="pull-right label label-primary">{{cart.length}}</span>
+            	</a>
+            </li>
+            
+            <li ui-sref-active="active">
+            	<a ui-sref="order.grid">
+            		<i class="fa fa-flag"></i>
+            		<span class="nav-label">Comande</span>
+            	</a>
+            </li>              
+                
             <li ui-sref-active="active">
             	<a ui-sref="country.grid"><i class="fa fa-flag"></i> <span class="nav-label">Nazioni</span></a>
             </li>
+            
+
+            
         </ul>
 
     </div>

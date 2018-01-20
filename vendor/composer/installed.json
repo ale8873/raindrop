@@ -134,7 +134,7 @@
         "version_normalized": "2.0.7.1",
         "source": {
             "type": "git",
-            "url": "https://github.com/yiisoft/jquery-pjax.git",
+            "url": "git@github.com:yiisoft/jquery-pjax.git",
             "reference": "aef7b953107264f00234902a3880eb50dafc48be"
         },
         "dist": {
@@ -3567,5 +3567,82 @@
         },
         "notification-url": "https://packagist.org/downloads/",
         "description": "User with improved RBAC"
+    },
+    {
+        "name": "netresearch/jsonmapper",
+        "version": "v0.11.0",
+        "version_normalized": "0.11.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cweiske/jsonmapper.git",
+            "reference": "979abda4b128415c642b06f07db615e75cfd3173"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/979abda4b128415c642b06f07db615e75cfd3173",
+            "reference": "979abda4b128415c642b06f07db615e75cfd3173",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.2.*",
+            "squizlabs/php_codesniffer": "~1.5"
+        },
+        "time": "2016-04-14T21:59:35+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "JsonMapper": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "OSL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Christian Weiske",
+                "email": "cweiske@cweiske.de",
+                "homepage": "http://github.com/cweiske/jsonmapper/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Map nested JSON structures onto PHP classes"
+    },
+    {
+        "name": "keepa/php_api",
+        "version": "1.13.6",
+        "version_normalized": "1.13.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/keepacom/php_api.git",
+            "reference": "f9e26f042b9f40ffa3f7cd6cb8d2b277693cce07"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/keepacom/php_api/zipball/f9e26f042b9f40ffa3f7cd6cb8d2b277693cce07",
+            "reference": "f9e26f042b9f40ffa3f7cd6cb8d2b277693cce07",
+            "shasum": ""
+        },
+        "require": {
+            "netresearch/jsonmapper": "^0.11.0",
+            "php": "^5 || ^7"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~5.7"
+        },
+        "time": "2017-11-14T19:36:27+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Keepa\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "API Framework for Keepa.com"
     }
 ]

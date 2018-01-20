@@ -1,0 +1,22 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Aggiorna {{single_label}}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a ui-sref="{{model_name}}.grid">{{label}}</a>
+            </li>
+            <li class="active">
+                <strong>Aggiorna {{single_label}}</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div ng-include="'views/country/form.html'" class="row"></div>
+</div>

@@ -50,12 +50,15 @@ $config = [
                 'profile' => 'auth/profile',
                 'logout' => 'auth/logout',
                 'columns' => 'model-info/columns',
+                'info-by-ean' => 'api/info-by-ean',
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'profile'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'supplier'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'country'],                
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'province'],
-                
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'product'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'order'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'product-category'],
             ],
         ],
         'request' => [

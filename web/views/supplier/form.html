@@ -1,117 +1,253 @@
 <div class="col-lg-12">
 	<div class="ibox float-e-margins">
 		<div class="ibox-content">
-			<form name="$parent.form" novalidate ng-submit="save()" method="get" class="form-horizontal">
+			<form name="$parent.form" novalidate ng-submit="save()" method="get"
+				class="form-horizontal">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nome</label>
 					<div class="col-sm-10">
-						<input required ng-model="$parent.model.name" name="name" ng-maxlength="45" class="form-control">
-						<div class="m-t-xs" ng-show="$parent.form.name.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.name.$error.required">Campo obbligatorio</small>
-                        	<small class="text-danger" ng-show="$parent.form.name.$error.maxlength">Il nome non può essere più lungo di 45 caratteri</small>
-                    	</div>
+						<input required ng-model="$parent.model.name" name="name"
+							ng-maxlength="45" class="form-control">
+						<div class="m-t-xs"
+							ng-show="$parent.form.name.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.name.$error.required">Campo
+								obbligatorio</small> <small class="text-danger"
+								ng-show="$parent.form.name.$error.maxlength">Il nome non
+								può essere più lungo di 45 caratteri</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nazione</label>
 					<div class="col-sm-10">
-						<select ng-change="setPrefix()" ng-model="$parent.model.country_code" class="form-control">
-      						<option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
-    					</select>
+						<select ng-change="setPrefix()"
+							ng-model="$parent.model.country_code" class="form-control">
+							<option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
+						</select>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Province</label>
+					<label class="col-sm-2 control-label">Provincia</label>
 					<div class="col-sm-10">
 						<select ng-model="$parent.model.province" class="form-control">
-      						<option ng-repeat="province in provinces" value="{{province.code}}">{{province.name}}</option>
-    					</select>
+							<option ng-repeat="province in provinces"
+								value="{{province.code}}">{{province.name}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Comune</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.model.city" name="city" ng-maxlength="45"
+							class="form-control">
+						<div class="m-t-xs"
+							ng-show="$parent.form.city.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.city.$error.maxlength">La città
+								non può essere più lungo di 45 caratteri</small>
+						</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Indirizzo</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.model.address" name="address"
+							g-maxlength="255" class="form-control">
+						<div class="m-t-xs"
+							g-show="$parent.form.address.$invalid && $parent.form.submitted">
+
+							<small class="text-danger"
+								ng-show="$parent.form.address.$error.maxlength">L'indirizzo
+								non può essere più lungo di 255 caratteri</small>
+						</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Cap</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.model.cap" name="cap"
+							g-maxlength="5" class="form-control">
+						<div class="m-t-xs"
+							g-show="$parent.form.cap.$invalid && $parent.form.submitted">
+
+							<small class="text-danger"
+								ng-show="$parent.form.cap.$error.maxlength">Il cap non può essere piu lungo di 5 caratteri</small>
+						</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email" ng-model="$parent.model.email" name="email"
+							ng-maxlength="45" class="form-control">
+						<div class="m-t-xs"
+							ng-show="$parent.form.email.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.email.$error.maxlength">Email non
+								può essere più lunga di 45 caratteri</small> <small class="text-danger"
+								ng-show="$parent.form.email.$error.email">Email non
+								valida</small>
+						</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Pec</label>
+					<div class="col-sm-10">
+						<input type="email" ng-model="$parent.model.pec" name="pec"
+							ng-maxlength="45" class="form-control">
+						<div class="m-t-xs"
+							ng-show="$parent.form.pec.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.pec.$error.maxlength">Pec non può
+								essere più lunga di 45 caratteri</small> <small class="text-danger"
+								ng-show="$parent.form.pec.$error.email">Pec non valida</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Partita Iva</label>
 					<div class="col-sm-10">
-						<div class="input-group m-b"><span class="input-group-addon">{{model.country_code}}</span>
-							<input ng-model="$parent.model.vat" name="vat" ng-minlength="8" ng-pattern="/^[0-9]*$/" ng-maxlength="11" class="form-control">
+						<div class="input-group m-b">
+							<span class="input-group-addon">{{model.country_code}}</span> <input
+								ng-model="$parent.model.vat" name="vat" ng-minlength="8"
+								ng-pattern="/^[0-9]*$/" ng-maxlength="11" class="form-control">
 						</div>
-						<div class="m-t-xs" ng-show="$parent.form.vat.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.vat.$error.maxlength">La partita iva deve essere massimo di 11 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.vat.$error.minlength">La partita iva deve essere minimo di 8 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.vat.$error.pattern">La partita puo contenere solo cifre</small>
-                    	</div>
+						<div class="m-t-xs"
+							ng-show="$parent.form.vat.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.vat.$error.maxlength">La partita
+								iva deve essere massimo di 11 cifre</small> <small class="text-danger"
+								ng-show="$parent.form.vat.$error.minlength">La partita
+								iva deve essere minimo di 8 cifre</small> <small class="text-danger"
+								ng-show="$parent.form.vat.$error.pattern">La partita puo
+								contenere solo cifre</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Telefono</label>
 					<div class="col-sm-10">
-						<div class="input-group m-b"><span class="input-group-addon">{{prefix}}</span>
-							<input name="phone" ng-model="$parent.model.phone" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" type="text" class="form-control">
+						<div class="input-group m-b">
+							<span class="input-group-addon">{{prefix}}</span> <input
+								name="phone" ng-model="$parent.model.phone"
+								ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20"
+								type="text" class="form-control">
 						</div>
-						<div class="m-t-xs" ng-show="$parent.form.phone.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.phone.$error.maxlength">Il numero di telefono deve essere massimo di 20 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.phone.$error.minlength">Il numero di telefono deve essere di almeno 3 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.phone.$error.pattern">Il numero di telefono puo contenere solo cifre</small>
-                    	</div>
+						<div class="m-t-xs"
+							ng-show="$parent.form.phone.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.phone.$error.maxlength">Il numero
+								di telefono deve essere massimo di 20 cifre</small> <small
+								class="text-danger"
+								ng-show="$parent.form.phone.$error.minlength">Il numero
+								di telefono deve essere di almeno 3 cifre</small> <small
+								class="text-danger" ng-show="$parent.form.phone.$error.pattern">Il
+								numero di telefono puo contenere solo cifre</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" >Cellulare</label>
+					<label class="col-sm-2 control-label">Cellulare</label>
 					<div class="col-sm-10">
-						<div class="input-group m-b"><span class="input-group-addon">{{prefix}}</span>
-							<input type="text" name="mobile" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" ng-model="$parent.model.mobile" class="form-control">
+						<div class="input-group m-b">
+							<span class="input-group-addon">{{prefix}}</span> <input
+								type="text" name="mobile" ng-pattern="/^[0-9]*$/"
+								ng-minlength="3" ng-maxlength="20"
+								ng-model="$parent.model.mobile" class="form-control">
 						</div>
-						<div class="m-t-xs" ng-show="$parent.form.mobile.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.mobile.$error.maxlength">Il numero di cellulare deve essere massimo di 20 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.mobile.$error.minlength">Il numero di cellulare deve essere di almeno 3 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.mobile.$error.pattern">Il numero di cellulare puo contenere solo cifre</small>
-                    	</div>
+						<div class="m-t-xs"
+							ng-show="$parent.form.mobile.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.mobile.$error.maxlength">Il numero
+								di cellulare deve essere massimo di 20 cifre</small> <small
+								class="text-danger"
+								ng-show="$parent.form.mobile.$error.minlength">Il numero
+								di cellulare deve essere di almeno 3 cifre</small> <small
+								class="text-danger" ng-show="$parent.form.mobile.$error.pattern">Il
+								numero di cellulare puo contenere solo cifre</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" >Fax</label>
+					<label class="col-sm-2 control-label">Fax</label>
 					<div class="col-sm-10">
-						<div class="input-group m-b"><span class="input-group-addon">{{prefix}}</span>
-							<input type="text" name="fax" ng-pattern="/^[0-9]*$/" ng-minlength="3" ng-maxlength="20" ng-model="$parent.model.fax" class="form-control">
+						<div class="input-group m-b">
+							<span class="input-group-addon">{{prefix}}</span> <input
+								type="text" name="fax" ng-pattern="/^[0-9]*$/" ng-minlength="3"
+								ng-maxlength="20" ng-model="$parent.model.fax"
+								class="form-control">
 						</div>
-						<div class="m-t-xs" ng-show="$parent.form.fax.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.fax.$error.maxlength">Il numero di fax deve essere massimo di 20 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.fax.$error.minlength">Il numero di fax deve essere di almeno 3 cifre</small>
-                        	<small class="text-danger" ng-show="$parent.form.fax.$error.pattern">Il numero di fax puo contenere solo cifre</small>
-                    	</div>
+						<div class="m-t-xs"
+							ng-show="$parent.form.fax.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.fax.$error.maxlength">Il numero di
+								fax deve essere massimo di 20 cifre</small> <small class="text-danger"
+								ng-show="$parent.form.fax.$error.minlength">Il numero di
+								fax deve essere di almeno 3 cifre</small> <small class="text-danger"
+								ng-show="$parent.form.fax.$error.pattern">Il numero di
+								fax puo contenere solo cifre</small>
+						</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Referente</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.model.referent" name="refernt"
+							ng-maxlength="45" class="form-control">
+						<div class="m-t-xs"
+							ng-show="$parent.form.referent.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.referent.$error.maxlength">Il
+								referente non può essere più lungo di 45 caratteri</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Codice Fiscale</label>
 					<div class="col-sm-10">
-						<input ng-model="$parent.model.tax_code" name="tax_code" ng-maxlength="16" class="form-control">
-						<div class="m-t-xs" ng-show="$parent.form.tax_code.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.tax_code.$error.maxlength">Il codice fiscale non può essere più lungo di 16 caratteri</small>
-                    	</div>
+						<input ng-model="$parent.model.tax_code" name="tax_code"
+							ng-maxlength="16" class="form-control">
+						<div class="m-t-xs"
+							ng-show="$parent.form.tax_code.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.tax_code.$error.maxlength">Il
+								codice fiscale non può essere più lungo di 16 caratteri</small>
+						</div>
 					</div>
 				</div>
-				<div class="hr-line-dashed"></div>				
+				<div class="hr-line-dashed"></div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" >Note</label>
+					<label class="col-sm-2 control-label">Note</label>
 					<div class="col-sm-10">
-						<textarea type="text" name="note" ng-maxlength="1000" ng-model="$parent.model.note" class="form-control"></textarea>
-						<div class="m-t-xs" ng-show="$parent.form.mobile.$invalid && $parent.form.submitted">
-                        	<small class="text-danger" ng-show="$parent.form.mobile.$error.maxlength">Il numero di cellulare deve essere massimo di 20 cifre</small>
-                    	</div>
+						<textarea type="text" name="note" ng-maxlength="1000"
+							ng-model="$parent.model.note" class="form-control"></textarea>
+						<div class="m-t-xs"
+							ng-show="$parent.form.mobile.$invalid && $parent.form.submitted">
+							<small class="text-danger"
+								ng-show="$parent.form.mobile.$error.maxlength">Il numero
+								di cellulare deve essere massimo di 20 cifre</small>
+						</div>
 					</div>
 				</div>
 				<div class="hr-line-dashed"></div>
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">
-						<a class="btn btn-white" ui-sref="{{model_name}}.grid" >Cancel</a>
-						<button class="btn btn-primary" type="submit">Save
-							changes</button>
+						<a class="btn btn-white" ui-sref="{{model_name}}.grid">Annulla</a>
+						<button class="btn btn-primary" type="submit">Salva</button>
 					</div>
 				</div>
 			</form>

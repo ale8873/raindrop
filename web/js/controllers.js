@@ -56,8 +56,45 @@
  * Contains several global data used in different view
  *
  */
-function MainCtrl($http,$scope,$location,$rootScope, changeAvatar) {
+function MainCtrl($http,$scope, $filter, $location,$rootScope, changeAvatar) {
 
+	$scope.cart = [];
+	$scope.addToCart = function(model){		
+		var found = $filter('filter')($scope.cart, {id: model.id})[0];
+		if(found){
+			found.quantity = found.quantity+1;
+		}else{
+			model.quantity = 1;
+			$scope.cart.push(model);
+		}		
+		$scope.cartTotal();
+	}
+	$scope.removeFromCart = function(product){		
+		$scope.cart.splice($scope.cart.indexOf(product),1);
+		$scope.cartTotal();
+	}
+	$scope.cartTotal = function(){
+		$scope.cart_total = 0;
+		angular.forEach($scope.cart, function(value, key) {
+			  $scope.cart_total = $scope.cart_total+Number(value.price*value.quantity);
+		});
+		$http({
+			  method: 'GET',
+			  url: 'https://blockchain.info/tobtc?currency=EUR&value='+$scope.cart_total
+		}).then(function successCallback(response) {
+		    // this callback will be called asynchronously
+		    // when the response is available
+			$scope.bitcoin_cart_total = response.data
+		}, function errorCallback(response) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		});
+	}
+	$scope.emptyCart = function(){
+		$scope.cart = [];
+	}
+	
+	
 	$rootScope.changeAvatar = changeAvatar.modal;
 		
 	$scope.loadProfile = function(){

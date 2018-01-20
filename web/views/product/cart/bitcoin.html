@@ -1,0 +1,13 @@
+<div class="modal-header">
+	<h4 class="modal-title">BTC {{bitcoin_cart_total}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <img class="col-lg-6" src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:1ArmoryXcfq7TnCSuZa9fQjRYwJ4bkRKfv?&amount={{bitcoin_cart_total}}" />
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-white" ng-click="cancel()">Annulla</button>
+	<button type="button" class="btn btn-primary" ng-click="ok()">Pagamento Ricevuto</button>
+</div>

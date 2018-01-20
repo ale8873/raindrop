@@ -33,13 +33,13 @@
 								{{ model[key] }}
 							</td>
 							<td>
-								<a class="btn btn-danger" tooltip-placement="top" uib-tooltip="Elimina" ng-click="delete(model)">
+								<a  tooltip-placement="top" uib-tooltip="Elimina" ng-click="delete(model)">
 									<i class="fa fa-trash"></i>
 								</a>
-								<a class="btn btn-info" tooltip-placement="top" uib-tooltip="Modifica" ui-sref="{{model_name}}.update({id:model.id})">
+								<a  tooltip-placement="top" uib-tooltip="Modifica" ui-sref="{{model_name}}.update({id:model.id})">
 									<i class="fa fa-edit"></i>
 								</a>
-								<a class="btn btn-primary" tooltip-placement="top" uib-tooltip="Visualizza" ui-sref="{{model_name}}.view({id:model.id})">
+								<a  tooltip-placement="top" uib-tooltip="Visualizza" ui-sref="{{model_name}}.view({id:model.id})">
 									<i class="fa fa-eye"></i>
 								</a>
 							</td>

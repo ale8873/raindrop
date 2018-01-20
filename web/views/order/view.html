@@ -1,0 +1,92 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Ordine</h2>
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li><a>Prodotti</a></li>
+			<li class="active"><strong>Cassa</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-md-9">
+			<div ng-if="model.wheels" class="alert alert-info">
+            	ordine a domicilio</a>.
+            </div>
+			<div class="ibox">
+				<div class="ibox-title">
+					<span class="pull-right">(<strong>{{model.cart.length}}</strong>)
+						elementi
+					</span>
+					<h5>Ordine</h5>
+				</div>
+				<div ng-repeat="product in model.cart" class="ibox-content">
+
+
+					<div class="table-responsive">
+						<table class="table shoping-cart-table">
+
+							<tbody>
+								<tr>
+									<td width="90"><img ng-src="{{product.image}}"
+										class="cart-product-imitation" /></td>
+									<td class="desc">
+										<h3>
+											<a href="#" class="text-navy"> {{product.title}} </a>
+										</h3>
+										<p class="small">It is a long established fact that a
+											reader will be distracted by the readable content of a page
+											when looking at its layout. The point of using Lorem Ipsum is
+										</p>
+										<dl class="small m-b-none">
+											<dt>Description lists</dt>
+											<dd>A description list is perfect for defining terms.</dd>
+										</dl>
+
+										
+									</td>
+
+									<td>€{{product.price}}</td>
+									<td width="65"><input disabled type="text" class="form-control"
+										placeholder="1"></td>
+									<td>
+										<h4>€{{product.price}}</h4>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+
+			
+			</div>
+
+		</div>
+		<div class="col-md-3">
+
+			<div class="ibox">
+				<div class="ibox-title">
+					<h5>Azioni</h5>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<a class="btn btn-info col-lg-12">Pronto</a>
+					</div>
+					<br>
+					<div class="row">
+						<a class="btn btn-danger col-lg-12">Problema</a>
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+</div>

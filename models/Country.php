@@ -50,7 +50,7 @@ class Country extends \yii\db\ActiveRecord
             'code' => 'Codice',
             'name' => 'Nome',
             'prefix' => 'Prefisso Telefonico',
-            'vat' => 'Vat',
+            'vat' => 'Aliquota Iva',
         ];
     }
 }

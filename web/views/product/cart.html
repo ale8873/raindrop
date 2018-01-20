@@ -1,0 +1,172 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Ordine</h2>
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li><a>Prodotti</a></li>
+			<li class="active"><strong>Ordine</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-md-9">
+
+			<div class="ibox">
+				<div class="ibox-title">
+					<span class="pull-right">(<strong>{{cart.length}}</strong>)
+						elementi
+					</span>
+					<h5>Ordine</h5>
+				</div>
+				<div ng-repeat="product in cart" class="ibox-content">
+					<div class="table-responsive">
+						<table class="table shoping-cart-table">
+							<tbody>
+								<tr>
+									<td style="text-align: center" width="90"><img
+										ng-src="{{product.image}}" class="cart-product-imitation" /></td>
+									<td class="desc">
+										<h3>
+											<a ui-sref="product.view({id:product.id})" class="text-navy"> {{product.title}} </a>
+										</h3>
+										<p class="small">{{product.description}}</p>
+									
+										<div class="m-t-sm">
+											 <a  ng-click="removeFromCart(product)" class="text-muted"><i
+												class="fa fa-trash"></i> Rimuovi elemento</a>
+										</div>
+									</td>
+
+									<td>€{{product.price}}</td>
+									<td width="65"><input type="text" class="form-control"
+										placeholder="1" ng-change="cartTotal()" ng-model="product.quantity" ></td>
+									<td>
+										<h4>€{{product.price*product.quantity}}</h4>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+								<div class="ibox-content">
+					 <a ui-sref="product.grid" class="btn btn-white"> Aggiungi dal
+						menu </a> 
+						<span style="margin-top:6px;" class="pull-right"><input icheck ng-model="wheels" type="checkbox" /> ordine a domicilio</span>
+				</div>
+				<div class="ibox-content">
+					<span ng-if="!wheels" class="pull-right"> <a ng-click="bitcoin()"
+						class="btn btn-primary "> <i class="fa fa fa-btc"></i> Bitcoin
+					</a> <a ng-click="checkout(2)" class="btn btn-primary "> <i
+							class="fa fa fa-money"></i> Contanti
+					</a> <a ng-click="checkout(3)" class="btn btn-primary "> <i
+							class="fa fa fa-credit-card"></i> Carta
+					</a> <a ng-click="checkout(0)" class="btn btn-primary "> <i
+							class="fa fa fa-shopping-cart"></i> Conto Tavolo
+					</a>
+					</span>
+					<span ng-if="wheels" class="pull-right"> <a ng-click="checkout(1)"
+						class="btn btn-primary "> <i class="fa fa fa-money"></i> Contanti alla consegna
+					</a> 
+					</span>
+					
+					 <a ng-click="emptyCart()" class="btn btn-white"> Annulla Ordine
+					</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-3">
+
+			<div class="ibox">
+				<div class="ibox-title">
+					<h5>Totale Ordine</h5>
+				</div>
+				<div class="ibox-content">
+					<span> Totale </span>
+					<h2 class="font-bold">€ {{cart_total}}</h2>					
+				
+				</div>
+			</div>
+
+			<div ng-if="wheels" class="ibox">
+				<div class="ibox-title">
+					<h5>Indirizzo Cliente</h5>
+				</div>
+				<div class="ibox-content">
+					<form name="$parent.form" novalidate ng-submit="save()"
+						method="get" class="form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.name" placeholder="Cognome Nome"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.email" placeholder="email"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.phone" placeholder="telefono"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.address" placeholder="Indirizzo"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.city" placeholder="Comune"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.province" placeholder="Provincia"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.vat" placeholder="Partita Iva"
+									class="form-control">
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<div ng-if="!wheels" class="ibox">
+				<div class="ibox-title">
+					<h5>Tavolo</h5>
+				</div>
+				<div class="ibox-content">
+					<form name="$parent.form" novalidate ng-submit="save()"
+						method="get" class="form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.table" type="number" placeholder="Numero Tavolo"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input ng-model="order.people" type="number" placeholder="Numero Coperti"
+									class="form-control">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

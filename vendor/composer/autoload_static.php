@@ -70,6 +70,10 @@ class ComposerStaticInitfbbfbb9d27f9270ef503ff589ba2e713
         array (
             'Psr\\Http\\Message\\' => 17,
         ),
+        'K' => 
+        array (
+            'Keepa\\' => 6,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -213,6 +217,10 @@ class ComposerStaticInitfbbfbb9d27f9270ef503ff589ba2e713
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'Keepa\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/keepa/php_api/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -245,6 +253,13 @@ class ComposerStaticInitfbbfbb9d27f9270ef503ff589ba2e713
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+        ),
+        'J' => 
+        array (
+            'JsonMapper' => 
+            array (
+                0 => __DIR__ . '/..' . '/netresearch/jsonmapper/src',
             ),
         ),
         'I' => 

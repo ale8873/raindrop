@@ -51,5 +51,19 @@ function supplierConfig($stateProvider){
             templateUrl: "views/supplier/view.html",
             data: { pageTitle: 'Basic form' },
             controller: 'supplierViewCtrl',
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'ui.event',
+                            files: ['js/plugins/uievents/event.js']
+                        },
+                        {
+                            name: 'ui.map',
+                            files: ['js/plugins/uimaps/ui-map.js']
+                        },
+                    ]);
+                }
+            }
         })
 }

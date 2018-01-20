@@ -1,0 +1,84 @@
+<div class="col-lg-12">
+	<div class="ibox float-e-margins">
+		<div class="ibox-content">
+			<form name="$parent.form" novalidate ng-submit="save()" method="get" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Codice</label>
+					<div class="col-sm-10">
+						<input  ng-model="$parent.model.sku" name="sku" ng-maxlength="45" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.form.sku.$invalid && $parent.form.submitted">
+                        	<small class="text-danger" ng-show="$parent.form.sku.$error.maxlength">Il codice non può essere più lungo di 2 caratteri</small>
+                    	</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Ean</label>
+					<div class="col-sm-8">
+						<input ng-model="$parent.model.ean" name="ean" ng-maxlength="13" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.form.ean.$invalid && $parent.form.submitted">
+                        	<small class="text-danger" ng-show="$parent.form.ean.$error.maxlength">Il codice ean non può essere più lungo di 13 caratteri</small>
+                    	</div>
+					</div>
+					<a  ng-click="searchEan()" class="btn btn-info" ><i class="fa fa-search"></i></a>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Titolo</label>
+					<div class="col-sm-10">
+						<input required ng-model="$parent.model.title" name="title" ng-maxlength="512" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.form.title.$invalid && $parent.form.submitted">
+                        	<small class="text-danger" ng-show="$parent.form.title.$error.required">Campo obbligatorio</small>
+                        	<small class="text-danger" ng-show="$parent.form.title.$error.maxlength">Il titolo non può essere più lungo di 512 caratteri</small>
+                    	</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Descrizione</label>
+					<div class="col-sm-10">
+						<textarea ng-model="$parent.model.description" name="description" ng-maxlength="512" class="form-control"></textarea>
+						<div class="m-t-xs" ng-show="$parent.form.description.$invalid && $parent.form.submitted">
+                        	<small class="text-danger" ng-show="$parent.form.description.$error.maxlength">La descrizione non può essere più lunga di 512 caratteri</small>
+                    	</div>
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Prezzo</label>
+					<div class="col-sm-10">
+						<input ng-model="$parent.model.price" name="price" class="form-control">
+
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Categoria</label>
+					<div class="col-sm-10">
+						<input  ng-model="$parent.model.category" name="category" class="form-control">
+					</div>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Immagine</label>
+					<div class="col-sm-8">
+						<input ng-model="$parent.model.image" name="image" ng-maxlength="512" class="form-control">
+						<div class="m-t-xs" ng-show="$parent.form.image.$invalid && $parent.form.submitted">
+                        	<small class="text-danger" ng-show="$parent.form.title.$error.maxlength">il link immagine non può essere più lungo di 512 caratteri</small>
+                    	</div>
+                    	<img alt="" ng-if="$parent.model.image" ng-src="{{model.image}}" style="margin-top:15px;border: 1px solid #e5e6e7;width:200px;" />
+					</div>
+					<a class="btn btn-info" ng-click="openKCFinder_singleFile()"><i class="fa fa-folder" ></i></a>
+				</div>
+				<div class="hr-line-dashed"></div>	
+							
+				<div class="form-group">
+					<div class="col-sm-4 col-sm-offset-2">
+						<a class="btn btn-white" ui-sref="{{model_name}}.grid" >Annulla</a>
+						<button class="btn btn-primary" type="submit">Salva</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
